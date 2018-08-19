@@ -4,6 +4,8 @@ Computes MSR and PSNR after compression of an image to check the compression qua
 # To compute
 Replace orignal_image.png and compressed_image.png with your own image files.
 
+![alt text](https://github.com/vasutomar/CompressionQualityAnalysis/blob/master/example_image.jpg "Example_image")
+
 # Use
 PSNR values defines how well a compression algorithm functions, lower PSNR values (0-15db) measns that the quality of restored image is bad, higher PSNR values (approximately 30-40db) means the compression algorithm works well. 
 
