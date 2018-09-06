@@ -5,6 +5,12 @@ import cv2
 def Representational(r,g,b):
 	return (0.299*r+0.287*g+0.114*b)
 
+def calculate(img):
+	array = np.zeros(img.shape)
+	b,g,r = cv2.split(img)
+	pixelAt = Representational(r,g,b)
+	return pixelAt
+
 def main():
 	
 	#Loading images (orignal image and compressed image)
@@ -14,24 +20,24 @@ def main():
 	#Getting image height and width
 	height,width = orignal_image.shape[:2]
 
-	#Error
+	#Error initialization
 	error_sum = 0.0
 
-	#
 	orignalPixelAt = 0.0
 	compressedPixelAt = 0.0
 
-	for i in range(height):
-		for j in range(width):
-			orignalPixelAt =Representational(orignal_image[i][j][0],orignal_image[i][j][1],orignal_image[i][j][2])
-			compressedPixelAt = Representational(compressed_image[i][j][0],compressed_image[i][j][1],compressed_image[i][j][2])
-			diff = pow(abs(orignalPixelAt-compressedPixelAt),2)
-			error_sum = error_sum + diff
+	orignalPixelAt = calculate(orignal_image)
+	compressedPixelAt = calculate(compressed_image)
+	diff = orignalPixelAt - compressedPixelAt
+	error = np.sum(np.abs(diff) ** 2)
 
-	MSR = error_sum/(height*width)
-	PSNR = -(10*math.log10(MSR/(255*255)))
+	error = error/(height*width)
 
-	print "PSNR value is " +str(int(PSNR))
+
+	#MSR = error_sum/(height*width)
+	PSNR = -(10*math.log10(error/(255*255)))
+
+	print("PSNR value is {}".format(PSNR))
 
 
 if __name__ == '__main__':
