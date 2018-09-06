@@ -1,7 +1,7 @@
 # CompressionQualityAnalysis
 Computes MSR and PSNR after compression of an image to check the compression quality.
 
-#Prerequisites
+# Prerequisites
 * [Numpy](http://www.numpy.org/)
 * [Opencv](https://opencv.org/)
 
@@ -17,7 +17,7 @@ Python3 PSNR.py
 # Significance of PSNR value
 PSNR values defines how well a compression algorithm functions, lower PSNR values (0-15db) measns that the quality of restored image is bad, higher PSNR values (approximately 30-40db) means the compression algorithm works well. 
 
-#Credits
+# Credits
 * **Mohd. Omama** - *Improvements in implementation* - [Mohd Omama](https://github.com/mohdomama)
 
 # References
